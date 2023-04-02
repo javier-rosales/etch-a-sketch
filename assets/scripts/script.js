@@ -14,13 +14,14 @@ function clearGrid(gridContainer) {
     }
 }
 
-function fillGrid(gridContainer, gridSize) {
+function updateGrid(gridContainer, gridSize) {
 
     clearGrid(gridContainer)
     
     // Set columns to grid
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
-
+    
+    // Fill grid
     const gridTotalCells = gridSize ** 2
     for (let addGridCell = 0; addGridCell < gridTotalCells; addGridCell++) {
         const gridCell = getNewGridCell()
@@ -46,4 +47,4 @@ function fillGrid(gridSize) {
 
 */
 
-fillGrid(gridContainer, GRID_SIZE)
+updateGrid(gridContainer, GRID_SIZE)
