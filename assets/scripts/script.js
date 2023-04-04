@@ -1,5 +1,7 @@
-let GRID_SIZE = 16
-const gridContainer = document.querySelector(".grid-container")
+const DEFAULT_GRID_SIZE = 16
+const GRID_CONTAINER = document.querySelector("#grid-container")
+
+let currentGridSize = DEFAULT_GRID_SIZE
 
 function getNewGridCell() {
     const gridCell = document.createElement("div")
@@ -14,14 +16,7 @@ function clearGrid(gridContainer) {
     }
 }
 
-function updateGrid(gridContainer, gridSize) {
-
-    clearGrid(gridContainer)
-    
-    // Set columns to grid
-    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
-    
-    // Fill grid
+function fillGrid(gridContainer, gridSize) {
     const gridTotalCells = gridSize ** 2
     for (let addGridCell = 0; addGridCell < gridTotalCells; addGridCell++) {
         const gridCell = getNewGridCell()
@@ -29,22 +24,14 @@ function updateGrid(gridContainer, gridSize) {
     }
 }
 
-/* This is an alternative if coordinates for each cell is needed
+function setupGrid(gridContainer, gridSize) {
+    // Before filling the grid...
+    clearGrid(gridContainer)
+    
+    // Set columns to grid
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
 
-function fillGrid(gridSize) {
-    for (let yIteration = 1; yIteration <= gridSize; yIteration++) {
-        for (let xIteration = 1; xIteration <= gridSize; xIteration++) {
-            const gridCell = createGridCell()
-
-            // Assign coordinates to cell
-            gridCell.setAttribute("data-x-coordinate", xIteration)
-            gridCell.setAttribute("data-y-coordinate", yIteration)
-
-            gridContainer.appendChild(gridCell)
-        }
-    }
+    updateGrid(gridContainer, gridSize)
 }
 
-*/
-
-updateGrid(gridContainer, GRID_SIZE)
+setupGrid(GRID_CONTAINER, DEFAULT_GRID_SIZE)
