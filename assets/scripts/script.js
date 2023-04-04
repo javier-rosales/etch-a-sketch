@@ -31,7 +31,7 @@ function setupGrid(gridContainer, gridSize) {
     // Set columns to grid
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
 
-    updateGrid(gridContainer, gridSize)
+    fillGrid(gridContainer, gridSize)
 }
 
 setupGrid(GRID_CONTAINER, DEFAULT_GRID_SIZE)
