@@ -2,12 +2,21 @@ const DEFAULT_GRID_SIZE = 16
 const GRID_CONTAINER = document.querySelector("#grid-container")
 
 let currentGridSize = DEFAULT_GRID_SIZE
+let mouseDown = false
 
 function getNewGridCell() {
     const gridCell = document.createElement("div")
     gridCell.classList.add("grid-cell")
+    gridCell.addEventListener("mouseover", selectCell)
+    gridCell.addEventListener("mousedown", selectCell)
 
     return gridCell
+}
+
+function selectCell(event) {
+    if (event.type === "mouseover" && mouseDown) {
+        event.target.classList.add("selected")
+    }
 }
 
 function clearGrid(gridContainer) {
@@ -33,5 +42,9 @@ function setupGrid(gridContainer, gridSize) {
 
     fillGrid(gridContainer, gridSize)
 }
+
+// When HTML has been parsed
+document.body.addEventListener("mousedown", () => mouseDown = true)
+document.body.addEventListener("mouseup", () => mouseDown = false)
 
 setupGrid(GRID_CONTAINER, DEFAULT_GRID_SIZE)

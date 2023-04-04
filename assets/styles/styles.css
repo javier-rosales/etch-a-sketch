@@ -1,3 +1,7 @@
+:root {
+    --default-selector-color: #222;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,4 +12,8 @@
     display: grid;
     grid-auto-rows: 1fr;
     aspect-ratio: 1 / 1;
+}
+
+.selected {
+    background-color: var(--default-selector-color);
 }
