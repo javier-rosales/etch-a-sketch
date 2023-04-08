@@ -14,6 +14,10 @@
     aspect-ratio: 1 / 1;
 }
 
+.grid-cell {
+    user-select: none;
+}
+
 .selected {
     background-color: var(--default-selector-color);
 }

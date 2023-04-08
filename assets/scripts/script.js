@@ -14,9 +14,9 @@ function getNewGridCell() {
 }
 
 function selectCell(event) {
-    if (event.type === "mouseover" && mouseDown) {
-        event.target.classList.add("selected")
-    }
+    if (event.type === "mouseover" && !mouseDown) return
+    
+    event.target.classList.add("selected")
 }
 
 function clearGrid(gridContainer) {
