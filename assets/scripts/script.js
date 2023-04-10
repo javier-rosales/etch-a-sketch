@@ -1,7 +1,6 @@
 const DEFAULT_GRID_SIZE = 16
 const gridContainer = document.querySelector("#grid-container")
 
-let currentGridSize = DEFAULT_GRID_SIZE
 let mouseDown = false
 
 function getNewGridCell() {
