@@ -1,14 +1,11 @@
 const DEFAULT_GRID_SIZE = 16
-const gridContainer = document.querySelector("#grid-container")
-
-let mouseDown = false
 
 function getNewGridCell() {
     const gridCell = document.createElement("div")
     gridCell.classList.add("grid-cell")
     gridCell.addEventListener("mouseover", selectCell)
     gridCell.addEventListener("mousedown", selectCell)
-
+    
     return gridCell
 }
 
@@ -38,12 +35,26 @@ function setupGrid(gridContainer, gridSize) {
     
     // Set columns to grid
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
-
+    
     fillGrid(gridContainer, gridSize)
 }
 
+function updateGridSize(gridSize, gridDimensionsPanel) {
+    gridDimensionsPanel.textContent = `${gridSize} X ${gridSize}`
+}
+
 // When HTML has been parsed
+const gridContainer = document.querySelector("#grid-container")
+const gridSizeSelector = document.querySelector(".grid-size-selector")
+const gridDimensionsPanel = document.querySelector(".grid-dimensions")
+
+let mouseDown = false
+
 document.body.addEventListener("mousedown", () => mouseDown = true)
 document.body.addEventListener("mouseup", () => mouseDown = false)
 
+updateGridSize(DEFAULT_GRID_SIZE, gridDimensionsPanel)
 setupGrid(gridContainer, DEFAULT_GRID_SIZE)
+
+gridSizeSelector.addEventListener("input", event => updateGridSize(event.target.value, gridDimensionsPanel))
+gridSizeSelector.addEventListener("change", event => setupGrid(gridContainer, event.target.value))
