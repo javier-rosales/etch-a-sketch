@@ -1,5 +1,5 @@
 const DEFAULT_GRID_SIZE = 16
-const GRID_CONTAINER = document.querySelector("#grid-container")
+const gridContainer = document.querySelector("#grid-container")
 
 let currentGridSize = DEFAULT_GRID_SIZE
 let mouseDown = false
@@ -47,4 +47,4 @@ function setupGrid(gridContainer, gridSize) {
 document.body.addEventListener("mousedown", () => mouseDown = true)
 document.body.addEventListener("mouseup", () => mouseDown = false)
 
-setupGrid(GRID_CONTAINER, DEFAULT_GRID_SIZE)
+setupGrid(gridContainer, DEFAULT_GRID_SIZE)
