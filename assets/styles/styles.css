@@ -1,5 +1,7 @@
 :root {
-    --default-selector-color: #222;
+    --default-cell-color: rgb(0, 0, 0);
+    --button-background-color: rgb(0, 0, 0);
+    --buton-font-color: rgb(255, 255, 255);
 }
 
 * {
@@ -18,6 +20,7 @@
     user-select: none;
 }
 
-.selected {
-    background-color: var(--default-selector-color);
+.menu-button.active {
+    background-color: var(--button-background-color);
+    color: var(--buton-font-color);
 }
