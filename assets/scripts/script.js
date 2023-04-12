@@ -102,10 +102,15 @@ function resetGrid(gridContainer) {
     cells.forEach(cell => cell.removeAttribute("style"))
 }
 
+function changeColor(event) {
+    currentFillColor = event.target.value
+}
+
 // When HTML has been parsed
 const gridContainer = document.querySelector("#grid-container")
 const gridSizeSelector = document.querySelector(".grid-size-selector")
 const gridDimensionsPanel = document.querySelector(".grid-dimensions")
+const colorPicker = document.querySelector(".color-picker")
 const colorModeButton = document.querySelector(".menu-button.color")
 const rainbowModeButton = document.querySelector(".menu-button.rainbow")
 const eraserModeButton = document.querySelector(".menu-button.eraser")
@@ -122,6 +127,7 @@ setupGrid(gridContainer, DEFAULT_GRID_SIZE)
 gridSizeSelector.addEventListener("input", event => updateGridSize(event.target.value, gridDimensionsPanel))
 gridSizeSelector.addEventListener("change", event => setupGrid(gridContainer, event.target.value))
 
+colorPicker.addEventListener("input", changeColor)
 colorModeButton.addEventListener("click", event => changeMode("color", event))
 rainbowModeButton.addEventListener("click", event => changeMode("rainbow", event))
 eraserModeButton.addEventListener("click", event => changeMode("eraser", event))
