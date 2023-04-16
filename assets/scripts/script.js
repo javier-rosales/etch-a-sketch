@@ -72,27 +72,26 @@ function updateGridSize(gridSize, gridDimensionsPanel) {
     gridDimensionsPanel.textContent = `${gridSize} X ${gridSize}`
 }
 
-function changeMode(newMode, event) {
+function changeMode(newMode) {
     currentMode = newMode
 
-    modeButton = event.target
-    modeButton.classList.add("active")
-    
     switch(newMode) {
         case "color":
+            colorModeButton.classList.add("active")
             rainbowModeButton.classList.remove("active")
             eraserModeButton.classList.remove("active")
             break
         
         case "rainbow":
             colorModeButton.classList.remove("active")
+            rainbowModeButton.classList.add("active")
             eraserModeButton.classList.remove("active")
             break
         
         case "eraser":
             colorModeButton.classList.remove("active")
             rainbowModeButton.classList.remove("active")
-            break
+            eraserModeButton.classList.add("active")
     }
 }
 
@@ -121,14 +120,15 @@ let mouseDown = false
 document.body.addEventListener("mousedown", () => mouseDown = true)
 document.body.addEventListener("mouseup", () => mouseDown = false)
 
-updateGridSize(DEFAULT_GRID_SIZE, gridDimensionsPanel)
-setupGrid(gridContainer, DEFAULT_GRID_SIZE)
-
 gridSizeSelector.addEventListener("input", event => updateGridSize(event.target.value, gridDimensionsPanel))
 gridSizeSelector.addEventListener("change", event => setupGrid(gridContainer, event.target.value))
 
 colorPicker.addEventListener("input", changeColor)
-colorModeButton.addEventListener("click", event => changeMode("color", event))
-rainbowModeButton.addEventListener("click", event => changeMode("rainbow", event))
-eraserModeButton.addEventListener("click", event => changeMode("eraser", event))
+colorModeButton.addEventListener("click", () => changeMode("color"))
+rainbowModeButton.addEventListener("click", () => changeMode("rainbow"))
+eraserModeButton.addEventListener("click", () => changeMode("eraser"))
 clearGridButton.addEventListener("click", () => resetGrid(gridContainer))
+
+updateGridSize(DEFAULT_GRID_SIZE, gridDimensionsPanel)
+setupGrid(gridContainer, DEFAULT_GRID_SIZE)
+changeMode(currentMode)
