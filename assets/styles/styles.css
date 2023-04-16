@@ -1,7 +1,13 @@
 :root {
-    --default-cell-color: rgb(0, 0, 0);
-    --button-background-color: rgb(13, 57, 84);
-    --buton-font-color: rgb(255, 255, 255);
+    --font-family: "Montserrat", sans-serif;
+    --font-color: rgb(34, 34, 34);
+    --background-gradient: linear-gradient(to right, rgb(96, 121, 195), rgb(46, 191, 145));
+    --default-cell-fill-color: rgb(0, 0, 0);
+    --button-background-color: rgba(255, 255, 255, .5);
+    --button-active-background-color: rgb(13, 57, 84);
+    --button-active-font-color: rgb(255, 255, 255);
+    --button-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    --grid-background-color: rgb(255, 255, 255);
 }
 
 * {
@@ -16,8 +22,8 @@ html {
 
 html,
 button {
-    font-family: "Montserrat", sans-serif;
-    color: rgb(34, 34, 34);
+    font-family: var(--font-family);
+    color: var(--font-color);
 }
 
 body {
@@ -27,7 +33,7 @@ body {
     grid-template-columns: 500px 1fr;
     place-items: center;
     margin: 0 auto;
-    background-image: linear-gradient(to right, rgb(96, 121, 195), rgb(46, 191, 145));
+    background-image: var(--background-gradient);
 }
 
 button,
@@ -81,7 +87,7 @@ input[type="range"] {
 .color-picker::-webkit-color-swatch {
     border: none;
     border-radius: 50%;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    box-shadow: var(--button-shadow);
 }
 
 .mode-selector {
@@ -100,13 +106,13 @@ input[type="range"] {
     border-radius: 5px;
     font-size: 1.1rem;
     font-weight: 500;
-    background-color: rgba(255, 255, 255, .5);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    background-color: var(--button-background-color);
+    box-shadow: var(--button-shadow);
 }
 
 .menu-button.active {
-    background-color: var(--button-background-color);
-    color: var(--buton-font-color);
+    background-color: var(--button-active-background-color);
+    color: var(--button-active-font-color);
 }
 
 .menu-button.clear {
@@ -122,7 +128,7 @@ input[type="range"] {
     aspect-ratio: 1 / 1;
     cursor: crosshair;
     margin: 25px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--grid-background-color);
     box-shadow: 0 0 20px rgba(0, 0, 0, .30);
 }
 
