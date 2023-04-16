@@ -1,10 +1,41 @@
-// Crete constants and main variables
+// Create constants and main variables
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_FILL_COLOR = "rgb(0, 0, 0)"
 const DEFAULT_MODE = "color"
 
 let currentFillColor = DEFAULT_FILL_COLOR
 let currentMode = DEFAULT_MODE
+
+// Create references of HTML elements
+const gridContainer = document.querySelector("#grid-container")
+const gridSizeSelector = document.querySelector(".grid-size-selector")
+const gridDimensionsPanel = document.querySelector(".grid-dimensions")
+const colorPicker = document.querySelector(".color-picker")
+const colorModeButton = document.querySelector(".menu-button.color")
+const rainbowModeButton = document.querySelector(".menu-button.rainbow")
+const eraserModeButton = document.querySelector(".menu-button.eraser")
+const clearGridButton = document.querySelector(".menu-button.clear")
+
+// Initial setup
+gridSizeSelector.value = DEFAULT_GRID_SIZE
+updateGridSize(DEFAULT_GRID_SIZE, gridDimensionsPanel)
+setupGrid(gridContainer, DEFAULT_GRID_SIZE)
+changeMode(currentMode)
+
+// Add listeners
+let mouseDown = false
+
+document.body.addEventListener("mousedown", () => mouseDown = true)
+document.body.addEventListener("mouseup", () => mouseDown = false)
+
+gridSizeSelector.addEventListener("input", event => updateGridSize(event.target.value, gridDimensionsPanel))
+gridSizeSelector.addEventListener("change", event => setupGrid(gridContainer, event.target.value))
+
+colorPicker.addEventListener("input", changeColor)
+colorModeButton.addEventListener("click", () => changeMode("color"))
+rainbowModeButton.addEventListener("click", () => changeMode("rainbow"))
+eraserModeButton.addEventListener("click", () => changeMode("eraser"))
+clearGridButton.addEventListener("click", () => resetGrid(gridContainer))
 
 // Define functions
 function getRandomNumber(start, end) {
@@ -106,34 +137,3 @@ function resetGrid(gridContainer) {
 function changeColor(event) {
     currentFillColor = event.target.value
 }
-
-// Create references to HTML elements
-const gridContainer = document.querySelector("#grid-container")
-const gridSizeSelector = document.querySelector(".grid-size-selector")
-const gridDimensionsPanel = document.querySelector(".grid-dimensions")
-const colorPicker = document.querySelector(".color-picker")
-const colorModeButton = document.querySelector(".menu-button.color")
-const rainbowModeButton = document.querySelector(".menu-button.rainbow")
-const eraserModeButton = document.querySelector(".menu-button.eraser")
-const clearGridButton = document.querySelector(".menu-button.clear")
-
-// Add listeners
-let mouseDown = false
-
-document.body.addEventListener("mousedown", () => mouseDown = true)
-document.body.addEventListener("mouseup", () => mouseDown = false)
-
-gridSizeSelector.addEventListener("input", event => updateGridSize(event.target.value, gridDimensionsPanel))
-gridSizeSelector.addEventListener("change", event => setupGrid(gridContainer, event.target.value))
-
-colorPicker.addEventListener("input", changeColor)
-colorModeButton.addEventListener("click", () => changeMode("color"))
-rainbowModeButton.addEventListener("click", () => changeMode("rainbow"))
-eraserModeButton.addEventListener("click", () => changeMode("eraser"))
-clearGridButton.addEventListener("click", () => resetGrid(gridContainer))
-
-// Initial setup
-gridSizeSelector.value = DEFAULT_GRID_SIZE
-updateGridSize(DEFAULT_GRID_SIZE, gridDimensionsPanel)
-setupGrid(gridContainer, DEFAULT_GRID_SIZE)
-changeMode(currentMode)
