@@ -1,3 +1,4 @@
+// Crete constants and main variables
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_FILL_COLOR = "rgb(0, 0, 0)"
 const DEFAULT_MODE = "color"
@@ -5,6 +6,7 @@ const DEFAULT_MODE = "color"
 let currentFillColor = DEFAULT_FILL_COLOR
 let currentMode = DEFAULT_MODE
 
+// Define functions
 function getRandomNumber(start, end) {
     return Math.round(Math.random() * (end - start)) + start
 }
@@ -105,7 +107,7 @@ function changeColor(event) {
     currentFillColor = event.target.value
 }
 
-// When HTML has been parsed
+// Create references to HTML elements
 const gridContainer = document.querySelector("#grid-container")
 const gridSizeSelector = document.querySelector(".grid-size-selector")
 const gridDimensionsPanel = document.querySelector(".grid-dimensions")
@@ -115,6 +117,7 @@ const rainbowModeButton = document.querySelector(".menu-button.rainbow")
 const eraserModeButton = document.querySelector(".menu-button.eraser")
 const clearGridButton = document.querySelector(".menu-button.clear")
 
+// Add listeners
 let mouseDown = false
 
 document.body.addEventListener("mousedown", () => mouseDown = true)
@@ -129,6 +132,8 @@ rainbowModeButton.addEventListener("click", () => changeMode("rainbow"))
 eraserModeButton.addEventListener("click", () => changeMode("eraser"))
 clearGridButton.addEventListener("click", () => resetGrid(gridContainer))
 
+// Initial setup
+gridSizeSelector.value = DEFAULT_GRID_SIZE
 updateGridSize(DEFAULT_GRID_SIZE, gridDimensionsPanel)
 setupGrid(gridContainer, DEFAULT_GRID_SIZE)
 changeMode(currentMode)
