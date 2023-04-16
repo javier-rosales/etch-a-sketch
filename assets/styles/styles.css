@@ -31,6 +31,10 @@ body {
     max-width: 1200px;
     display: grid;
     grid-template-columns: 500px 1fr;
+    grid-template-rows: 130px 1fr;
+    grid-template-areas:
+        "header header"
+        "menu grid-container";
     place-items: center;
     margin: 0 auto;
     background-image: var(--background-gradient);
@@ -78,7 +82,24 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 5px;
 }
 
+.header {
+    grid-area: header;
+    height: 100px;
+    justify-self: stretch;
+    align-self: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    opacity: .7;
+}
+
 .menu {
+    grid-area: menu;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -157,6 +178,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .grid-container {
+    grid-area: grid-container;
     display: grid;
     grid-auto-rows: 1fr;
     justify-self: stretch;
