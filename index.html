@@ -6,20 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Etch-a-Sketch - The Odin Project</title>
         <link rel="stylesheet" href="assets/styles/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
         <script src="assets/scripts/script.js" defer></script>
     </head>
     <body>
         <div class="menu">
-            <input type="color" class="color-picker" value="#000000">
-            <div class="mode-selector">
-                <button class="menu-button color active">Color</button>
-                <button class="menu-button rainbow">Rainbow</button>
-                <button class="menu-button eraser">Eraser</button>
+            <div class="setting">
+                <div class="setting-name">MODE</div>
+                <input type="color" class="color-picker">
+                <div class="mode-selector">
+                    <button class="menu-button color active">Color</button>
+                    <button class="menu-button rainbow">Rainbow</button>
+                    <button class="menu-button eraser">Eraser</button>
+                </div>
             </div>
-            <div class="grid-dimensions">
-                <!-- Set by JavaScript -->
+            <div class="setting">
+                <div class="setting-name">SIZE</div>
+                <div class="grid-dimensions">
+                    <!-- Set by JavaScript -->
+                </div>
+                <input type="range" class="grid-size-selector" min="2" max="64">
             </div>
-            <input type="range" class="grid-size-selector" min="2" max="64">
             <button class="menu-button clear">Clear</button>
         </div>
         <div id="grid-container" class="grid-container">

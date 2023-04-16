@@ -1,7 +1,7 @@
 :root {
-    --default-cell-color: #000000;
-    --button-background-color: #000000;
-    --buton-font-color: #ffffff;
+    --default-cell-color: rgb(0, 0, 0);
+    --button-background-color: rgb(13, 57, 84);
+    --buton-font-color: rgb(255, 255, 255);
 }
 
 * {
@@ -10,18 +10,122 @@
     box-sizing: border-box;
 }
 
-.grid-container {
-    display: grid;
-    grid-auto-rows: 1fr;
-    aspect-ratio: 1 / 1;
-    cursor: crosshair;
+html {
+    cursor: default;
 }
 
-.grid-cell {
-    user-select: none;
+html,
+button {
+    font-family: "Montserrat", sans-serif;
+    color: rgb(34, 34, 34);
+}
+
+body {
+    min-height: 100vh;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    place-items: center;
+    margin: 0 auto;
+    background-image: linear-gradient(to right, rgb(96, 121, 195), rgb(46, 191, 145));
+}
+
+button,
+input[type="color"],
+input[type="range"] {
+    cursor: pointer;
+}
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 80%;
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .05);
+    box-shadow: 0 5px 10px rgba(13, 57, 84, .37);
+    backdrop-filter: blur(2px);
+}
+
+.setting-name {
+    margin-bottom: 12px;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: .25rem;
+    color: rgba(255, 255, 255, .7);
+}
+
+.color-picker {
+    width: 100px;
+    height: 100px;
+    appearance: none;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+.mode-selector {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.grid-dimensions {
+    font-size: 1.5rem;
+}
+
+.menu-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, .5);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
 }
 
 .menu-button.active {
     background-color: var(--button-background-color);
     color: var(--buton-font-color);
+}
+
+.menu-button.clear {
+    align-self: center;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-auto-rows: 1fr;
+    justify-self: stretch;
+    aspect-ratio: 1 / 1;
+    cursor: crosshair;
+    margin: 25px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .30);
+}
+
+.grid-cell {
+    user-select: none;
 }
