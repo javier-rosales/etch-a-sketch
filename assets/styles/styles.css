@@ -31,10 +31,11 @@ body {
     max-width: 1200px;
     display: grid;
     grid-template-columns: 500px 1fr;
-    grid-template-rows: 130px 1fr;
+    grid-template-rows: 130px 1fr 50px;
     grid-template-areas:
-        "header header"
-        "menu grid-container";
+        "header  header"
+        "menu    grid-container"
+        "footer  footer";
     place-items: center;
     margin: 0 auto;
     background-image: var(--background-gradient);
@@ -191,4 +192,24 @@ input[type="range"]::-moz-range-thumb {
 
 .grid-cell {
     user-select: none;
+}
+
+.footer {
+    grid-area: footer;
+    place-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github-profile {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: inherit;
+    opacity: .7;
+    text-decoration: none;
+}
+
+.github-profile > i {
+    margin-right: 8px;
 }
