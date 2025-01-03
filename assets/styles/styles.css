@@ -200,6 +200,7 @@ input[type="range"]::-moz-range-thumb {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem 0;
 }
 
 .github-profile {
@@ -212,4 +213,23 @@ input[type="range"]::-moz-range-thumb {
 
 .github-profile > i {
     margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    body {
+        display: block;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .mode-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .grid-container {
+        margin-top: 5rem;
+    }
 }
